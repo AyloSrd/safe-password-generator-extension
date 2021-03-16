@@ -17,8 +17,48 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
             <section id="generation-tab">
-                <button>Generate Password</button>
-                <p id='password'></p>
+                <form>
+                    <input 
+                    type="checkbox" 
+                    name="lowercase" 
+                    id="lowercase"
+                    checked="true"
+                    >
+                    <label for="lowercase">Lowercase characters</label>
+                    <input 
+                    type="checkbox" 
+                    name="uppercase" 
+                    id="uppercase"
+                    checked="true"
+                    >
+                    <label for="uppercase">Uppercase characters</label>                 
+                    <input 
+                        type="checkbox" 
+                        name="numbers" 
+                        id="numbers"
+                        checked="true"
+                    >
+                    <label for="numbers">Numbers</label>
+                    <input 
+                        type="checkbox" 
+                        name="symbols" 
+                        id="symbols"
+                        checked="true"
+                    >
+                    <label for="symbols">Symbols</label>
+                    <input 
+                        type="submit"
+                        value="Generate Password"    
+                    >
+                    <input 
+                        type="number"
+                        value="12"
+                        min="4"
+                        max="2000"
+                        id="pswd-length"
+                    >
+                </form>
+                <span id="password"></span>
             </section>
             <section id="storage-tab">
                 

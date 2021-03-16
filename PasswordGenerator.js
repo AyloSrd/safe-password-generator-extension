@@ -1,7 +1,7 @@
 export default  class PasswordGenerator {
     constructor() {
-        this.uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         this.lowercase = 'abcdefghijklmnopqrstuvwxyz';
+        this.uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         this.numbers = '0123456789';
         this.symbols = '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
         this.password = ''
