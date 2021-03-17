@@ -10,6 +10,7 @@
         <title>Safe Password Generator</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./fonts/stylesheet.css">
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -18,51 +19,62 @@
         <![endif]-->
             <section id="generation-tab">
                 <form>
-                    <input 
-                    type="checkbox" 
-                    name="lowercase" 
-                    id="lowercase"
-                    checked="true"
-                    >
-                    <label for="lowercase">Lowercase characters</label>
-                    <input 
-                    type="checkbox" 
-                    name="uppercase" 
-                    id="uppercase"
-                    checked="true"
-                    >
-                    <label for="uppercase">Uppercase characters</label>                 
-                    <input 
-                        type="checkbox" 
-                        name="numbers" 
-                        id="numbers"
-                        checked="true"
-                    >
-                    <label for="numbers">Numbers</label>
-                    <input 
-                        type="checkbox" 
-                        name="symbols" 
-                        id="symbols"
-                        checked="true"
-                    >
-                    <label for="symbols">Symbols</label>
-                    <input 
-                        type="submit"
-                        value="Generate Password"    
-                    >
-                    <input 
+                    <label class="container" for="lowercase">Lowercase
+                        <input 
+                            type="checkbox"
+                            name="lowercase"
+                            id="lowercase"
+                            checked="true"
+                        >
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="uppercase">Uppercase
+                        <input 
+                            type="checkbox"
+                            name="uppercase"
+                            id="uppercase"
+                            checked="true"
+                        >
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="numbers">Numbers
+                        <input 
+                            type="checkbox"
+                            name="numbers"
+                            id="numbers"
+                            checked="true"
+                        >
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container" for="symbols">Symbols
+                        <input 
+                            type="checkbox"
+                            name="symbols"
+                            id="symbols"
+                            checked="true"
+                        >
+                        <span class="checkmark"></span>
+                    </label>
+                    <div>
+                        <label for="pswd-length">Length :</label>
+                        <input 
                         type="number"
+                        name="pswd-length"
                         value="12"
                         min="4"
                         max="2000"
                         id="pswd-length"
-                    >
+                        >
+                    <button>Generate</button>
                 </form>
-                <span id="password"></span>
+                <input 
+                    value=""
+                    id="password"
+                >
             </section>
-            <section id="storage-tab">
+            <!-- <section id="storage-tab">
                 
-            </section>
+            </section> -->
         <script src="./script.js" type="module" defer async></script>
         <script src="./PasswordGenerator.js" type="module" defer></script>
     </body>
