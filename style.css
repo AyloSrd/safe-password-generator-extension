@@ -1,22 +1,29 @@
+:root {
+  --bckgrd: #e9eaed;
+  --small-unit: 1rem;
+  --standard-unit: 2rem;
+  --large-unit: 5rem;
+}
+
 *, *::before, *::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
+    font-size: 1rem;
 }
 
 body {
-    background: #e9eaed;
-    background-color: #e9eaed;
+    background: var(--bckgrd);
+    background-color: var(--bckgrd);
 }
 
 .container {
     display: block;
     position: relative;
-    padding-left: 35px;
+    padding-left: 25px;
     margin-bottom: 12px;
     cursor: pointer;
-    font-size: 22px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -38,8 +45,8 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    height: 25px;
-    width: 25px;
+    height: 20px;
+    width: 20px;
     background: linear-gradient(145deg, #f9fafe, #d2d3d5);
     box-shadow:  3px 3px 5px #c6c7c9,
                -3px -3px 5px #ffffff;
@@ -80,3 +87,14 @@ body {
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+
+.button {
+    padding: calc(var(--small-unit)*0.5) var(--small-unit);
+    border: none;
+    font-size: 1rem;
+    border-radius: calc(var(--small-unit)*0.5);
+    background: #9daee1;
+    box-shadow:  7px 7px 13px #c6c7c9,
+                -7px -7px 13px #ffffff;
+    cursor: pointer;
+}
