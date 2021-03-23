@@ -18,7 +18,7 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
             <section id="generation-tab">
-                <form>
+                <form class="form">
                     <div class="left-label-group">
                         <label class="container" for="lowercase">Lowercase
                             <input 
@@ -59,15 +59,17 @@
                             <span class="checkmark"></span>
                         </label>
                     </div>
-                    <label for="pswd-length">Length :</label>
-                    <input 
-                        type="number"
-                        name="pswd-length"
-                        value="12"
-                        min="4"
-                        max="2000"
-                        id="pswd-length"
-                    >
+                    <div class="pswd-length-container">
+                        <label for="pswd-length">Length :</label>
+                        <input 
+                            type="number"
+                            name="pswd-length"
+                            value="12"
+                            min="4"
+                            max="2000"
+                            id="pswd-length"
+                        >
+                    </div>
                     <button class="button">Generate</button>
                 </form>
                 <input 
