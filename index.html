@@ -17,6 +17,10 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+            <section id="tab-switcher">
+                <button class="button">Generator</button>
+                <button class="button">Favourites</button>
+            </section>
             <section id="generation-tab">
                 <form class="form">
                     <div class="left-label-group">
@@ -70,17 +74,39 @@
                             id="pswd-length"
                         >
                     </div>
-                    <button class="button">Generate</button>
+                    <button class="button">New Password</button>
                 </form>
-                <input 
-                    value=""
-                    id="password"
-                >
+                <form class="small-form">
+                    <input 
+                        value=""
+                        id="password"
+                    >
+                    <button type="reset">Copy</button>
+                    <button type="submit">Save</S></button>
+                </form>
+
+            </section>
+            <section id="save-tab">
+                <form>
+                    <input 
+                        type="text" 
+                        name="associated-name" 
+                        id="associated-name"
+                    >
+                    <input 
+                        type="text"
+                        id="password-copy"
+                        readonly
+                    >
+                    <button type="reset">Copy</button>
+                    <button type="submit">Save</S></button>
+                </form>
             </section>
             <!-- <section id="storage-tab">
                 
             </section> -->
         <script src="./script.js" type="module" defer async></script>
         <script src="./PasswordGenerator.js" type="module" defer></script>
+        <script src="./Display.js" type="module" defer></script>
     </body>
 </html>
