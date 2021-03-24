@@ -2,6 +2,7 @@ import PasswordGenerator from './PasswordGenerator.js'
 import Display from './Display.js'
 
 const secondaryForm =  document.querySelector("#generation-tab > form.small-form")
+const saveForm = document.querySelector("#save-tab > form")
 const password = document.getElementById('password')
 const passwordCopy = document.getElementById('password-copy')
 
@@ -23,6 +24,19 @@ secondaryForm.addEventListener('reset', e => {
     e.preventDefault()
     password.select()
     document.execCommand('copy')
+})
+
+saveForm.addEventListener('submit', e => {
+    e.preventDefault()
+    const associatedName = document.getElementById('associated-name').value
+    chrome.storage.sync.get(['sepg'], res => {
+        const oldList = res.sepg ?? []
+        const newList = [...oldList, {id: `${Math.random()}`, assName: associatedName, str: passwordCopy.value}]
+        console.log(newList)
+        chrome.storage.sync.set({sepg: newList}, () => {
+            console.log('done')
+          })
+      })
 })
 
 
