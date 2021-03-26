@@ -22,6 +22,10 @@ const createItem = (id, assName, str) => {
     assNameDisplay.setAttribute('for', 'str');
     assNameDisplay.innerText = assName
     strDisplay.value = display.showOnScreen(str)
+    copyButton.addEventListener('click', () => {
+        strDisplay.select()
+        document.execCommand('copy')
+    })
     form.appendChild(assNameDisplay)
     form.appendChild(strDisplay)
     itemContainer.appendChild(form)
@@ -30,12 +34,31 @@ const createItem = (id, assName, str) => {
     return itemContainer
 }
 
+const deleteAllDiv = (isActive) => {
+    const container = document.createElement('div')
+    const deleteAllButton = document.createElement('button')
+    deleteAllButton.innerText = 'delete all'
+    if(isActive) deleteAllButton.addEventListener('click', () => chrome.storage.sync.set({sepg: []}, () => populateStorageSection()))
+    if(!isActive) deleteAllButton.disabled = true
+    container.appendChild(deleteAllButton)
+    return container
+}
+
 const populateStorageSection = () => {
     chrome.storage.sync.get(['sepg'], res => {
-        if (res.sepg.length === 0 || res.sepg === undefined)  storageSection.innerText = 'no items'
+        if (res.sepg.length === 0 || res.sepg === undefined) {
+         storageSection.innerText = 'no items'
+         storageSection.appendChild(deleteAllDiv(false))
+         return
+        }
         res.sepg.forEach(item => storageSection.appendChild(createItem(item.id, item.assName, item.str)))
+        storageSection.appendChild(deleteAllDiv(true))
       })
 }
+
+document.getElementById('generator-switcher').addEventListener('click', () => {
+    document.getElementById('#generation-tab').style.display = 'block'
+})
 
 document.querySelector("#generation-tab > .form").addEventListener('submit', e => {
     e.preventDefault()
