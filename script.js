@@ -1,6 +1,7 @@
 import PasswordGenerator from './PasswordGenerator.js'
 import Display from './Display.js'
 
+const generationSection = document.getElementById('generation-tab')
 const secondaryForm =  document.querySelector("#generation-tab > form.small-form")
 const saveForm = document.querySelector("#save-tab > form")
 const password = document.getElementById('password')
@@ -8,6 +9,13 @@ const passwordCopy = document.getElementById('password-copy')
 const storageSection =  document.getElementById('storage-tab')
 
 const display = new Display()
+
+const emptyStorageSection = () => {
+    let el = storageSection
+    while (el.firstChild) el.removeChild(el.firstChild)
+}
+
+const deleteOneItem = id => chrome.storage.sync.get(['sepg'], res => chrome.storage.sync.set({sepg : res.sepg.filter(el => el.id !== id)}, () => populateStorageSection()))
 
 const createItem = (id, assName, str) => {
     const itemContainer = document.createElement('div')
@@ -22,15 +30,20 @@ const createItem = (id, assName, str) => {
     assNameDisplay.setAttribute('for', 'str');
     assNameDisplay.innerText = assName
     strDisplay.value = display.showOnScreen(str)
-    copyButton.addEventListener('click', () => {
+    copyButton.addEventListener('click', e => {
+        e.preventDefault()
         strDisplay.select()
         document.execCommand('copy')
     })
+    deleteButton.addEventListener('click', e => {
+        e.preventDefault()
+        deleteOneItem(id)
+    })
     form.appendChild(assNameDisplay)
     form.appendChild(strDisplay)
+    form.appendChild(copyButton)
+    form.appendChild(deleteButton)
     itemContainer.appendChild(form)
-    itemContainer.appendChild(copyButton)
-    itemContainer.appendChild(deleteButton)
     return itemContainer
 }
 
@@ -45,6 +58,7 @@ const deleteAllDiv = (isActive) => {
 }
 
 const populateStorageSection = () => {
+    emptyStorageSection()
     chrome.storage.sync.get(['sepg'], res => {
         if (res.sepg.length === 0 || res.sepg === undefined) {
          storageSection.innerText = 'no items'
@@ -57,14 +71,21 @@ const populateStorageSection = () => {
 }
 
 document.getElementById('generator-switcher').addEventListener('click', () => {
-    document.getElementById('#generation-tab').style.display = 'block'
+    emptyStorageSection()
+    storageSection.style.display = 'none'
+    generationSection.style.display = 'block'
+})
+
+document.getElementById('fav-switcher').addEventListener('click', () => {
+    generationSection.style.display = 'none'
+    storageSection.style.display = 'block'
+    populateStorageSection()
 })
 
 document.querySelector("#generation-tab > .form").addEventListener('submit', e => {
     e.preventDefault()
     const params = Array.from(document.querySelectorAll('#generation-tab > form > div > label> input[type=checkbox]:checked')).map(cbx => cbx.name)
     const pswdLength = Number(document.getElementById('pswd-length').value)
-    console.log()
     const PswdGen = new PasswordGenerator()
     password.value = PswdGen.generate(params, pswdLength)
 })
@@ -95,5 +116,4 @@ saveForm.addEventListener('submit', e => {
       })
 })
 
-populateStorageSection()
 
