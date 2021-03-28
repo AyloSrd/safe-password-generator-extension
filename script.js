@@ -10,10 +10,7 @@ const storageSection =  document.getElementById('storage-tab')
 
 const display = new Display()
 
-const emptyStorageSection = () => {
-    let el = storageSection
-    while (el.firstChild) el.removeChild(el.firstChild)
-}
+const emptySection = el => { while (el.firstChild) el.removeChild(el.firstChild) }
 
 const deleteOneItem = id => chrome.storage.sync.get(['sepg'], res => chrome.storage.sync.set({sepg : res.sepg.filter(el => el.id !== id)}, () => populateStorageSection()))
 
@@ -58,7 +55,7 @@ const deleteAllDiv = (isActive) => {
 }
 
 const populateStorageSection = () => {
-    emptyStorageSection()
+    emptySection(storageSection)
     chrome.storage.sync.get(['sepg'], res => {
         if (res.sepg.length === 0 || res.sepg === undefined) {
          storageSection.innerText = 'no items'
@@ -71,7 +68,7 @@ const populateStorageSection = () => {
 }
 
 document.getElementById('generator-switcher').addEventListener('click', () => {
-    emptyStorageSection()
+    emptySection(storageSection)
     storageSection.style.display = 'none'
     generationSection.style.display = 'block'
 })

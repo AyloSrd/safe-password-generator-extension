@@ -11,7 +11,7 @@ export default  class PasswordGenerator {
         this.password = params.reduce((psw, p) => psw + this[p].charAt(Math.floor(Math.random() * this[p].length)), '')
         if (length) {
             const all = params.reduce((psw, p) => psw + this[p], '')
-            for (let i = 0; i < length; i++) {
+            for (let i = 0; i < length - params.length; i++) {
                 this.password += all.charAt(Math.floor(Math.random() * all.length))
             }
         }
