@@ -1,5 +1,5 @@
 :root {
-  --bckgrd: #e9eaed;
+  --bckgrd: #f0f0f0;
   --small-unit: 1rem;
   --standard-unit: 2rem;
   --large-unit: 5rem;
@@ -13,24 +13,54 @@
     font-size: 1rem;
 }
 
+*:focus {
+  outline: none;
+}
+
 body {
+    font-size: 14px;
     background: var(--bckgrd);
     background-color: var(--bckgrd);
-    width: calc(3*var(--large-unit));   
+    width: calc(3*var(--large-unit)); 
+    height: calc(7*var(--large-unit));   
     padding: var(--small-unit);
 }
 
-/*****************************TAB SWITCHER*****************************/
 
-#tab-switcher {
-  padding: 0 var(--small-unit) var(--small-unit);
-  display: grid;
-  gap: var(--small-unit);
-  grid-template-columns: 1fr 1fr;
+div.glass, article.glass, section.glass, form.glass, button.glass {
+  background: rgba( 74, 144, 226, 0.15 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 7.0px );
+  -webkit-backdrop-filter: blur( 7.0px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
+div.neu, article.neu, section.neu, form.neu, button.neu {
+  background: var(--bckgrd);
+  box-shadow:  5px 5px 10px #cccccc,
+              -5px -5px 10px #ffffff;
+  border: none;
+}
+
+button.round {
+   border-radius: 50%;
+}
+
+button.neu:hover {
+  background: linear-gradient(145deg, #d8d8d8, #ffffff);
+}
+
+input[type=text].neu-in, input[type=number].neu-in {
+  border: none;
+  background: var(--bckgrd);
+  box-shadow: inset 5px 5px 10px #cccccc,
+              inset -5px -5px 10px #ffffff;
+}
+
+
 /*****************************GENERATION TAB*****************************/
-#generation-tab form.form {
+/* #generation-tab form.form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3 auto);
@@ -62,7 +92,7 @@ body {
     user-select: none;
 }
   
-/* Hide the browser's default checkbox */
+
 #generation-tab .container input {
     position: absolute;
     opacity: 0;
@@ -71,7 +101,7 @@ body {
     width: 0;
 }
   
-/* Create a custom checkbox */
+
 #generation-tab .checkmark {
     position: absolute;
     top: 0;
@@ -85,7 +115,6 @@ body {
     transition: 0.2s ease-in;
 }
   
-/* When the checkbox is checked, add a blue background */
 #generation-tab .container input:checked ~ .checkmark {
       background: #5171d2;
       box-shadow: inset 3px 3px 5px #4560b3,
@@ -93,19 +122,16 @@ body {
       transition: 0.2s ease-in;
 }
   
-/* Create the checkmark/indicator (hidden when not checked) */
 #generation-tab .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
   
-  /* Show the checkmark when checked */
 #generation-tab .container input:checked ~ .checkmark:after {
     display: block;
 }
   
-  /* Style the checkmark/indicator */
 #generation-tab .container .checkmark:after {
     left: 9px;
     top: 5px;
@@ -136,6 +162,6 @@ button.button:hover {
               -3px -3px 5px #ffffff;
   cursor: pointer;
   transition: 0.2s ease-in;
-}
+}  */
 
 /*****************************STORAGE TAB*****************************/

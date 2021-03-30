@@ -15,8 +15,8 @@
     </head>
     <body>
             <section id="tab-switcher">
-                <button id="generator-switcher" class="button">Generator</button>
-                <button id="fav-switcher" class="button">Favourites</button>
+                <button id="generator-switcher" class="neu round">➕</button>
+                <button id="fav-switcher" class="neu round">❤️</button>
             </section>
             <section id="generation-tab">
                 <form class="form">
@@ -64,6 +64,7 @@
                         <label for="pswd-length">Length :</label>
                         <input 
                             type="number"
+                            class="neu-in"
                             name="pswd-length"
                             value="12"
                             min="4"
@@ -71,15 +72,17 @@
                             id="pswd-length"
                         >
                     </div>
-                    <button class="button">New Password</button>
+                    <button class="neu">New Password</button>
                 </form>
                 <form class="small-form">
                     <input 
+                        type="text"
+                        class="neu-in"
                         value=""
                         id="password"
                     >
-                    <button type="reset">Copy</button>
-                    <button type="submit">Save</S></button>
+                    <button type="reset" class="neu">Copy</button>
+                    <button type="submit" class="neu">Save</S></button>
                 </form>
 
             </section>
@@ -89,14 +92,16 @@
                         type="text" 
                         name="associated-name" 
                         id="associated-name"
+                        class="neu-in"
                     >
                     <input 
                         type="text"
                         id="password-copy"
+                        class="neu-in"
                         readonly
                     >
-                    <button type="reset">Copy</button>
-                    <button type="submit">Save</S></button>
+                    <button type="reset" class="neu">Copy</button>
+                    <button type="submit" class="neu">Save</S></button>
                 </form>
             </section>
             <section id="storage-tab">
