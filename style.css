@@ -1,5 +1,7 @@
 :root {
   --bckgrd: #f0f0f0;
+  --secondary: #9DC0E9;
+  --tertiary: #e64f70;
   --small-unit: 1rem;
   --standard-unit: 2rem;
   --large-unit: 5rem;
@@ -21,14 +23,14 @@ body {
     font-size: 14px;
     background: var(--bckgrd);
     background-color: var(--bckgrd);
-    width: calc(3*var(--large-unit)); 
-    height: calc(7*var(--large-unit));   
+    width: calc(4*var(--large-unit)); 
+    height: calc(5*var(--large-unit));   
     padding: var(--small-unit);
 }
 
 
 div.glass, article.glass, section.glass, form.glass, button.glass {
-  background: rgba( 74, 144, 226, 0.15 );
+  background: rgba(74, 145, 226, 0.5);
   box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
   backdrop-filter: blur( 7.0px );
   -webkit-backdrop-filter: blur( 7.0px );
@@ -37,30 +39,76 @@ div.glass, article.glass, section.glass, form.glass, button.glass {
 }
 
 div.neu, article.neu, section.neu, form.neu, button.neu {
+  height: var(--standard-unit);
   background: var(--bckgrd);
   box-shadow:  5px 5px 10px #cccccc,
               -5px -5px 10px #ffffff;
   border: none;
 }
 
+button.danger {
+  background: var(--tertiary) !important; 
+}
+
 button.round {
    border-radius: 50%;
+   height: var(--standard-unit);
+   width: var(--standard-unit);
 }
 
 button.neu:hover {
   background: linear-gradient(145deg, #d8d8d8, #ffffff);
 }
 
+button.neu.on-glass {
+  background: var(--secondary);/*inear-gradient(145deg, #a8cdf9, #8dadd2); */
+  box-shadow:  5px 5px 10px #85a3c6,
+              -5px -5px 10px #b5ddff;
+}
+
+button.neu.on-glass:hover {
+  background: linear-gradient(145deg, #8dadd2, #a8cdf9);
+  box-shadow:  5px 5px 10px #85a3c6,
+              -5px -5px 10px #b5ddff;
+}
+
 input[type=text].neu-in, input[type=number].neu-in {
+  text-align: center;
+  height: var(--standard-unit);
   border: none;
   background: var(--bckgrd);
   box-shadow: inset 5px 5px 10px #cccccc,
               inset -5px -5px 10px #ffffff;
 }
 
+#save-tab {
+  height: 100vh;
+  width: 100vw;
+  max-height: 100%;
+  max-width: 100%;
+  padding: var(--standard-unit) var(--standard-unit) var(--standard-unit) 0;
+  z-index: 100;
+  position: absolute;
+  top: 0;
+  left: -500px;
+  transition: left 0.5s ease-in-out;
+}
+
+#save-tab form.glass {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+  gap: var(--small-unit);
+  border-radius: 0 10px 10px 0;
+
+}
+#save-tab form.glass input {
+  width: 80%
+}
 
 /*****************************GENERATION TAB*****************************/
-/* #generation-tab form.form {
+/*#generation-tab form.form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3 auto);
@@ -145,23 +193,6 @@ input[type=text].neu-in, input[type=number].neu-in {
 #generation-tab #password {
   margin-top: var(--small-unit);
 }
-
-button.button {
-    padding: calc(var(--small-unit)*0.5) var(--small-unit);
-    border: none;
-    font-size: 1rem;
-    border-radius: calc(var(--small-unit)*0.5);
-    background: #9daee1;
-    box-shadow:  5px 5px 7px #c6c7c9,
-                -5px -5px 7px #ffffff;
-    cursor: pointer;
-}
-
-button.button:hover {
-  box-shadow:  3px 3px 5px #c6c7c9,
-              -3px -3px 5px #ffffff;
-  cursor: pointer;
-  transition: 0.2s ease-in;
-}  */
+*/
 
 /*****************************STORAGE TAB*****************************/

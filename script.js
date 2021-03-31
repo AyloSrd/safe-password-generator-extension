@@ -3,6 +3,7 @@ import Display from './Display.js'
 
 const generationSection = document.getElementById('generation-tab')
 const secondaryForm =  document.querySelector("#generation-tab > form.small-form")
+const saveTab = document.getElementById('save-tab')
 const saveForm = document.querySelector("#save-tab > form")
 const password = document.getElementById('password')
 const passwordCopy = document.getElementById('password-copy')
@@ -21,9 +22,14 @@ const createItem = (id, assName, str) => {
     const strDisplay = document.createElement('input')
     const copyButton = document.createElement('button')
     const deleteButton = document.createElement('button')
-    copyButton.innerText= 'c'
-    deleteButton.innerText = 'x'
+    copyButton.innerText = 'c'
+    deleteButton.innerText = '❌'
+    copyButton.className = 'neu'    
+    deleteButton.className = 'neu'
+    strDisplay.className = 'neu-in'
     strDisplay.setAttribute('name', 'str')
+    strDisplay.type = 'text'
+    strDisplay.readOnly = 'true'
     assNameDisplay.setAttribute('for', 'str');
     assNameDisplay.innerText = assName
     strDisplay.value = display.showOnScreen(str)
@@ -46,8 +52,10 @@ const createItem = (id, assName, str) => {
 
 const deleteAllDiv = (isActive) => {
     const container = document.createElement('div')
+    container.className = 'glass'
     const deleteAllButton = document.createElement('button')
     deleteAllButton.innerText = 'delete all'
+    deleteAllButton.className = 'neu on-glass danger'
     if(isActive) deleteAllButton.addEventListener('click', () => chrome.storage.sync.set({sepg: []}, () => populateStorageSection()))
     if(!isActive) deleteAllButton.disabled = true
     container.appendChild(deleteAllButton)
@@ -92,6 +100,7 @@ password.addEventListener('keydown', e => e.preventDefault())
 secondaryForm.addEventListener('submit', e => {
     e.preventDefault()
     passwordCopy.value = password.value
+    saveTab.style.left = '0'
 })
 
 secondaryForm.addEventListener('reset', e => {
@@ -108,9 +117,16 @@ saveForm.addEventListener('submit', e => {
         const newList = [...oldList, {id: `${Math.random()}`, assName: associatedName, str: display.putIn(passwordCopy.value)}]
         console.log(newList)
         chrome.storage.sync.set({sepg: newList}, () => {
-            console.log('done')
-          })
-      })
+            saveTab.style.left = '-500px'
+            passwordCopy.value = ''
+        })
+    })
+})
+
+saveForm.addEventListener('reset', e => {
+    e.preventDefault()
+    saveTab.style.left = '-500px'
+    passwordCopy.value = ''
 })
 
 
