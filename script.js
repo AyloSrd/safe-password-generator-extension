@@ -22,7 +22,7 @@ const createItem = (id, assName, str) => {
     const strDisplay = document.createElement('input')
     const copyButton = document.createElement('button')
     const deleteButton = document.createElement('button')
-    copyButton.innerText = 'c'
+    copyButton.innerText = '📋'
     deleteButton.innerText = '❌'
     copyButton.className = 'neu'    
     deleteButton.className = 'neu'
