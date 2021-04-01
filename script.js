@@ -8,6 +8,9 @@ const saveForm = document.querySelector("#save-tab > form")
 const password = document.getElementById('password')
 const passwordCopy = document.getElementById('password-copy')
 const storageSection =  document.getElementById('storage-tab')
+const copyIconTemplate = document.getElementById('copy-svg')
+const deleteIconTemplate = document.getElementById('delete-svg')
+const deleteAllIconTemplate = document.getElementById('delete-all-svg')
 
 const display = new Display()
 
@@ -22,9 +25,11 @@ const createItem = (id, assName, str) => {
     const strDisplay = document.createElement('input')
     const copyButton = document.createElement('button')
     const deleteButton = document.createElement('button')
-    copyButton.innerText = '📋'
-    deleteButton.innerText = '❌'
-    copyButton.className = 'neu'    
+    const copyIcon = copyIconTemplate.content.cloneNode(true)
+    const deleteIcon = deleteIconTemplate.content.cloneNode(true)
+    copyButton.appendChild(copyIcon)
+    deleteButton.appendChild(deleteIcon)
+    copyButton.className = 'neu'
     deleteButton.className = 'neu'
     strDisplay.className = 'neu-in'
     strDisplay.setAttribute('name', 'str')
@@ -54,7 +59,8 @@ const deleteAllDiv = (isActive) => {
     const container = document.createElement('div')
     container.className = 'glass'
     const deleteAllButton = document.createElement('button')
-    deleteAllButton.innerText = 'delete all'
+    const deleteAllIcon = deleteAllIconTemplate.content.cloneNode(true)
+    deleteAllButton.appendChild(deleteAllIcon)
     deleteAllButton.className = 'neu on-glass danger'
     if(isActive) deleteAllButton.addEventListener('click', () => chrome.storage.sync.set({sepg: []}, () => populateStorageSection()))
     if(!isActive) deleteAllButton.disabled = true
