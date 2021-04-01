@@ -24,7 +24,7 @@ body {
     background: var(--bckgrd);
     background-color: var(--bckgrd);
     width: calc(4*var(--large-unit)); 
-    height: calc(5*var(--large-unit));   
+    height: 600px;    
     padding: var(--small-unit);
 }
 
@@ -107,8 +107,37 @@ input[type=text].neu-in, input[type=number].neu-in {
   width: 80%
 }
 
+#storage-tab div.items-div {
+  height: 100vh;
+  width: 100vw;
+  max-width: 100%;
+  overflow-y: auto;
+}
+
+#storage-tab div.glass {
+  height: var(--large-unit);
+  width: calc(4*var(--large-unit) - calc(2*var(--small-unit)));
+  max-width: 100%;
+  position: fixed;
+  bottom: var(--small-unit);
+  display: grid;
+  align-items: center;
+  z-index: 50;
+}
+
+#storage-tab div.shrugging {
+  height: 50vh;
+  width: 100vw;
+  max-height: 100%;
+  max-width: 100%;
+  font-size: calc(2*var(--standard-unit));
+  color: #aaa;
+  display: grid;
+  place-items: center;
+}
+
 /*****************************GENERATION TAB*****************************/
-/*#generation-tab form.form {
+#generation-tab form.form {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(3 auto);
@@ -193,6 +222,6 @@ input[type=text].neu-in, input[type=number].neu-in {
 #generation-tab #password {
   margin-top: var(--small-unit);
 }
-*/
+
 
 /*****************************STORAGE TAB*****************************/

@@ -55,6 +55,14 @@ const createItem = (id, assName, str) => {
     return itemContainer
 }
 
+const shrugging = () => {
+    const shrugging = document.createElement('div')
+    const txt = document.createTextNode('¯\\_(ツ)_/¯')
+    shrugging.appendChild(txt)
+    shrugging.className = 'shrugging'
+    return shrugging
+}
+
 const deleteAllDiv = (isActive) => {
     const container = document.createElement('div')
     container.className = 'glass'
@@ -72,11 +80,14 @@ const populateStorageSection = () => {
     emptySection(storageSection)
     chrome.storage.sync.get(['sepg'], res => {
         if (res.sepg.length === 0 || res.sepg === undefined) {
-         storageSection.innerText = 'no items'
-         storageSection.appendChild(deleteAllDiv(false))
-         return
+            storageSection.appendChild(shrugging())
+            storageSection.appendChild(deleteAllDiv(false))
+            return
         }
-        res.sepg.forEach(item => storageSection.appendChild(createItem(item.id, item.assName, item.str)))
+        const itemsDiv = document.createElement('div')
+        itemsDiv.className = 'items-container'
+        res.sepg.forEach(item => itemsDiv.appendChild(createItem(item.id, item.assName, item.str)))
+        storageSection.appendChild(itemsDiv)
         storageSection.appendChild(deleteAllDiv(true))
       })
 }
