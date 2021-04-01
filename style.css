@@ -1,4 +1,5 @@
 :root {
+  --text: #555;
   --bckgrd: #f0f0f0;
   --secondary: #9DC0E9;
   --tertiary: #e64f70;
@@ -13,6 +14,7 @@
     box-sizing: border-box;
     font-family: 'Ubuntu', sans-serif;
     font-size: 1rem;
+    color: var(--text);
 }
 
 *:focus {
@@ -47,7 +49,12 @@ div.neu, article.neu, section.neu, form.neu, button.neu {
 }
 
 button.danger {
-  background: var(--tertiary) !important; 
+  border: solid 2px var(--tertiary) !important; 
+  border-radius: 50px;
+}
+
+button.danger svg {
+  fill: var(--tertiary) !important; 
 }
 
 button.round {

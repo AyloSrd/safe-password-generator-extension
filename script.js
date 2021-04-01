@@ -29,8 +29,8 @@ const createItem = (id, assName, str) => {
     const deleteIcon = deleteIconTemplate.content.cloneNode(true)
     copyButton.appendChild(copyIcon)
     deleteButton.appendChild(deleteIcon)
-    copyButton.className = 'neu'
-    deleteButton.className = 'neu'
+    copyButton.className = 'neu round'
+    deleteButton.className = 'neu round'
     strDisplay.className = 'neu-in'
     strDisplay.setAttribute('name', 'str')
     strDisplay.type = 'text'
