@@ -52,6 +52,11 @@ div.neu.clicked, article.neu.clicked, section.neu.clicked, form.neu.clicked, but
   background: var(--secondary);
   box-shadow: inset 5px 5px 10px #85a3c6,
             inset -5px -5px 10px #b5ddff;
+  color: white;
+}
+
+div.neu.clicked svg, article.neu.clicked svg, section.neu.clicked svg, form.neu.clicked svg, button.neu.clicked svg {
+  fill: white !important; 
 }
 
 button.danger {
