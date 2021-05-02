@@ -1,6 +1,8 @@
 import PasswordGenerator from './PasswordGenerator.js'
 import Display from './Display.js'
 
+const generatorSwitcher = document.getElementById('generator-switcher')
+const favSwitcher = document.getElementById('fav-switcher')
 const generationSection = document.getElementById('generation-tab')
 const secondaryForm =  document.querySelector("#generation-tab > form.small-form")
 const saveTab = document.getElementById('save-tab')
@@ -13,6 +15,12 @@ const deleteIconTemplate = document.getElementById('delete-svg')
 const deleteAllIconTemplate = document.getElementById('delete-all-svg')
 
 const display = new Display()
+
+const toggleClickedTab = () => {
+    generatorSwitcher.classList.toggle('clicked')
+    favSwitcher.classList.toggle('clicked')
+    
+}
 
 const emptySection = el => { while (el.firstChild) el.removeChild(el.firstChild) }
 
@@ -92,16 +100,18 @@ const populateStorageSection = () => {
       })
 }
 
-document.getElementById('generator-switcher').addEventListener('click', () => {
+generatorSwitcher.addEventListener('click', () => {
     emptySection(storageSection)
     storageSection.style.display = 'none'
     generationSection.style.display = 'block'
+    toggleClickedTab()
 })
 
-document.getElementById('fav-switcher').addEventListener('click', () => {
+favSwitcher.addEventListener('click', () => {
     generationSection.style.display = 'none'
     storageSection.style.display = 'block'
     populateStorageSection()
+    toggleClickedTab()
 })
 
 document.querySelector("#generation-tab > .form").addEventListener('submit', e => {
