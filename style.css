@@ -48,6 +48,12 @@ div.neu, article.neu, section.neu, form.neu, button.neu {
   border: none;
 }
 
+div.neu.clicked, article.neu.clicked, section.neu.clicked, form.neu.clicked, button.neu.clicked {
+  background: var(--secondary);
+  box-shadow: inset 5px 5px 10px #85a3c6,
+            inset -5px -5px 10px #b5ddff;
+}
+
 button.danger {
   border: solid 2px var(--tertiary) !important; 
   border-radius: 50px;
