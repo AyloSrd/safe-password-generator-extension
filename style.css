@@ -2,6 +2,7 @@
   --text: #555;
   --bckgrd: #f0f0f0;
   --secondary: #9DC0E9;
+  --secondary-dark: #5171d2;
   --tertiary: #e64f70;
   --small-unit: 1rem;
   --standard-unit: 2rem;
@@ -49,9 +50,16 @@ div.neu, article.neu, section.neu, form.neu, button.neu {
 }
 
 div.neu.clicked, article.neu.clicked, section.neu.clicked, form.neu.clicked, button.neu.clicked {
-  background: var(--secondary);
-  box-shadow: inset 5px 5px 10px #85a3c6,
-            inset -5px -5px 10px #b5ddff;
+  background: var(--secondary-dark);
+  box-shadow: inset 5px 5px 10px #4560b3,
+            inset -5px -5px 10px #5d82f2;
+  color: white;
+}
+
+div.neu.clicked:hover, article.neu.clicked:hover, section.neu.clicked:hover, form.neu.clicked:hover, button.neu.clicked:hover {
+  background: var(--secondary-dark);
+  box-shadow: inset 5px 5px 10px #4560b3,
+            inset -5px -5px 10px #5d82f2;
   color: white;
 }
 
